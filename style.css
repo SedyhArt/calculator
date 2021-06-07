@@ -1,3 +1,8 @@
+@font-face {
+  font-family: Digital;
+  src: url(./Digital\ Regular.ttf);
+}
+
 
 * {
   box-sizing: border-box;
@@ -21,7 +26,7 @@
   border-radius: 5px;
   padding: 5px;
   font-size: 36px;
-  font-family: 'WebFont';
+  font-family: 'Digital';
   text-align: right;
 }
 

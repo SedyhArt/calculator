@@ -35,8 +35,12 @@ const numberClick = function () {
     firstParametr = num;
     resultBlock.textContent = firstParametr;
   } else if (!currentAction) {
-    firstParametr += num;
-    resultBlock.textContent = firstParametr;
+    if (num == 0 && firstParametr == 0 && !doesItHasDot(firstParametr)) {
+      firstParametr = null;
+    } else {
+      firstParametr += num;
+      resultBlock.textContent = firstParametr;
+    }
   } else if (
     secondParametr === null &&
     currentAction &&
@@ -49,8 +53,12 @@ const numberClick = function () {
     currentAction &&
     firstParametr !== null
   ) {
-    secondParametr += num;
-    resultBlock.textContent = secondParametr;
+    if (num == 0 && secondParametr == 0 && !doesItHasDot(secondParametr)) {
+      secoondParametr = null;
+    } else {
+      secondParametr += num;
+      resultBlock.textContent = secondParametr;
+    }
   } else if (currentAction && result) {
     secondParametr = num;
     resultBlock.textContent = secondParametr;
@@ -59,7 +67,7 @@ const numberClick = function () {
 
 const signClick = function () {
   const sign = this.getAttribute("data-value");
-  
+
   if (result !== null) {
     btnResult.click();
     currentAction = null;
@@ -112,19 +120,19 @@ btnResult.addEventListener("click", function () {
       resultBlock.textContent = Number(result);
       firstParametr = result;
     }
-  
+
     if (currentAction === "-") {
       result = (Number(firstParametr) - Number(secondParametr)).toFixed(8);
       resultBlock.textContent = Number(result);
       firstParametr = result;
     }
-  
+
     if (currentAction === "*") {
       result = (Number(firstParametr) * Number(secondParametr)).toFixed(8);
       resultBlock.textContent = Number(result);
       firstParametr = result;
     }
-  
+
     if (currentAction === "/") {
       if (secondParametr === "0") {
         resultBlock.textContent = "На 0 делить нельзя";
@@ -137,14 +145,12 @@ btnResult.addEventListener("click", function () {
     currentAction = null;
     secondParametr = null;
   }
-  
 
   console.log("1", firstParametr);
   console.log("2", secondParametr);
   console.log("res", result);
   console.log("action", currentAction);
 });
-
 
 btn1.addEventListener("click", numberClick);
 btn2.addEventListener("click", numberClick);
@@ -162,22 +168,22 @@ btnDiv.addEventListener("click", signClick);
 btnSub.addEventListener("click", signClick);
 btnMult.addEventListener("click", signClick);
 
-document.addEventListener('keydown', (e) => {
-  if(e.key == 1 ) btn1.click();
-  if(e.key == 2 ) btn2.click();
-  if(e.key == 3 ) btn3.click();
-  if(e.key == 4 ) btn4.click();
-  if(e.key == 5 ) btn5.click();
-  if(e.key == 6 ) btn6.click();
-  if(e.key == 7 ) btn7.click();
-  if(e.key == 8 ) btn8.click();
-  if(e.key == 9 ) btn9.click();
-  if(e.key == 0 ) btn0.click();
-  if(e.key == '+' ) btnPlus.click();
-  if(e.key == '/' ) btnDiv.click();
-  if(e.key == '*' ) btnMult.click();
-  if(e.key == '-' ) btnSub.click();
-  if(e.key == '.' ) btnDot.click();
-  if(e.key == '=' ) btnResult.click();
-  if(e.key == 'Backspace') resetBtn.click();
-})
+document.addEventListener("keydown", (e) => {
+  if (e.key == 1) btn1.click();
+  if (e.key == 2) btn2.click();
+  if (e.key == 3) btn3.click();
+  if (e.key == 4) btn4.click();
+  if (e.key == 5) btn5.click();
+  if (e.key == 6) btn6.click();
+  if (e.key == 7) btn7.click();
+  if (e.key == 8) btn8.click();
+  if (e.key == 9) btn9.click();
+  if (e.key == 0) btn0.click();
+  if (e.key == "+") btnPlus.click();
+  if (e.key == "/") btnDiv.click();
+  if (e.key == "*") btnMult.click();
+  if (e.key == "-") btnSub.click();
+  if (e.key == ".") btnDot.click();
+  if (e.key == "=") btnResult.click();
+  if (e.key == "Backspace") resetBtn.click();
+});
